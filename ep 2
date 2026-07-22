@@ -1,0 +1,29 @@
+clc;
+clear;
+close;
+
+// EXNO: 2
+// Analysis of SWR by varying Characteristic Impedance (Zo)
+
+// Fixed Load Impedance
+mag = 50;
+theta = -40 * %pi / 180;    // Convert degrees to radians
+ZR = mag * (cos(theta) + %i * sin(theta));
+
+// Variable Characteristic Impedance
+Zo = input("Enter the value of Zo (Ohms): ");
+
+// Reflection Coefficient
+K = (ZR - Zo) / (ZR + Zo);
+
+// Magnitude of Reflection Coefficient
+ampK = abs(K);
+
+// Standing Wave Ratio
+S = (1 + ampK) / (1 - ampK);
+
+// Display Results
+printf("\nLoad Impedance (ZR) = %.2f < -40 degrees Ohms\n", mag);
+printf("\nCharacteristic Impedance (Zo) = %.2f Ohms\n", Zo);
+printf("\nReflection Coefficient |K| = %.4f\n", ampK);
+printf("Standing Wave Ratio (SWR) = %.3f\n", S);
