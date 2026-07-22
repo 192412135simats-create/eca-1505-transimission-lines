@@ -1,0 +1,27 @@
+clc;
+clear;
+close;
+
+// Given data
+Zr = 100;      // Load impedance (Ohms)
+Zs = 50;       // Source impedance (Ohms)
+
+s = 9;         // Spacing (cm)
+d = 0.1;       // Diameter (cm)
+r = d / 2;
+
+f = 500e6;     // Frequency = 500 MHz
+
+// Characteristic impedance of quarter-wave transformer
+Zo = sqrt(Zs * Zr);
+
+// Characteristic impedance of two-wire line
+Zof = 276 * log10(s / r);
+
+// Quarter-wave length
+L = (3e8 / f) / 4;
+
+// Display results
+printf("Length of quarter-wave transformer = %.4f meters\n", L);
+printf("Characteristic impedance of quarter-wave transformer = %.4f Ohms\n", Zo);
+printf("Characteristic impedance of two-wire line = %.4f Ohms\n", Zof);
